@@ -12,12 +12,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const initializePassport = require('./passport-config');
-initializePassport(passport
-    // email => users.find(user => user.email === email),
-    // id => users.find(user => user.id === id)
-);
-
-//const users = [];
+const book = require("pg/lib/query");
+initializePassport(passport);
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: false}))
@@ -31,8 +27,25 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride('_method'));
 
-app.get('/', (req, res) => {
-    res.render('index');
+app.get('/admin/books', async (req, res) => {
+    const books = await db.query("SELECT * FROM book");
+    res.render('admin/books/index', {books: books.rows});
+})
+
+app.get('/admin/books/new', (req, res) => {
+    res.render('admin/books/new');
+})
+
+app.get('/admin/books/:id/edit', async (req, res) => {
+    const book = await db.query("SELECT * FROM book WHERE id = $1", [req.params.id]);
+    res.render('admin/books/edit', { book: book.rows[0]});
+})
+
+app.put('/admin/books/:id', async (req, res) => {
+    const {title, author, genre, isbn, publisher, year, quantity, price} = req.body;
+    await db.query("UPDATE book SET title = $1, author = $2, genre = $3, isbn = $4, publisher = $5, year = $6, quantity = $7, price = $8 WHERE id = $9",
+        [title, author, genre, isbn, publisher, year, quantity, price, req.params.id]);
+    res.redirect("/admin/books/");
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
@@ -40,7 +53,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/admin/books',
     failureRedirect: '/login',
     failureFlash: true
 }))
@@ -54,15 +67,19 @@ app.post('/register', checkNotAuthenticated, async(req, res) => {
         const hashedPassword = await bcrypt.hashSync(req.body.password, 10);
         const {username, email} = req.body;
         await db.query('INSERT INTO customer (username, email, password) values ($1, $2, $3)', [username, email, hashedPassword]);
-        // users.push({
-        //     id: Date.now().toString(),
-        //     username: req.body.username,
-        //     email: req.body.email,
-        //     password: hashedPassword
-        // })
         res.redirect('/login');
     } catch {
         res.redirect('/register');
+    }
+})
+
+app.post('/admin/books', checkAuthenticated, async(req, res) => {
+    try {
+        const {title, author, genre, isbn, publisher, year, quantity, price} = req.body;
+        await db.query('INSERT INTO book (title, author, genre, isbn, publisher, year, quantity, price) values ($1, $2, $3, $4, $5, $6, $7, $8)', [title, author, genre, isbn, publisher, year, quantity, price]);
+        res.redirect('/admin/books');
+    } catch {
+        res.redirect('/admin/books');
     }
 })
 

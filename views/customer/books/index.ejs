@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Readers Shelf</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" href="/customer/books">The Readers Shelf</a>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <button class="btn btn-outline-light" type="submit">Cart</button>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <div class="my-5">
+            <h2 class="text-center">Books</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4 mb-5">
+            <%for (const book of books) {%>
+            <div class="col">
+                <div class="card">
+                    <img style="height: 400px; object-fit: fill" src="<%=book.cover%>" class="card-img-top img-fluid" alt="<%=book.title%> Cover Image">
+                    <div class="card-body">
+                        <a href="/customer/books/<%=book.id%>" class="fs-5 stretched-link text-decoration-none"><%=book.title%></a>
+                        <p class="card-text lh-1"><%=book.author%></p>
+                        <p class="card-text lh-1"><%=book.genre%></p>
+                        <p class="card-text fw-bold lh-1 fs-5 text-primary"><%=book.price%></p>
+                        <p class="card-text lh-1"><%=book.quantity%> in stock</p>
+                    </div>
+                </div>
+            </div>
+            <%}%>
+        </div>
+    </div>
+    <script src="/bootstrap.bundle.min.js"></script>
+</body>
+</html>

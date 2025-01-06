@@ -7,12 +7,19 @@ CREATE TABLE IF NOT EXISTS Customer (
 
 CREATE TABLE IF NOT EXISTS Book (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(20) NOT NULL UNIQUE,
+    title VARCHAR(100) NOT NULL UNIQUE,
     author VARCHAR(50) NOT NULL UNIQUE,
     genre VARCHAR(100) NOT NULL,
-    isbn VARCHAR(100) NOT NULL,
+    isbn VARCHAR(100) NOT NULL UNIQUE,
     publisher VARCHAR(100) NOT NULL,
     year SMALLINT NOT NULL,
     quantity INTEGER NOT NULL,
-    price MONEY NOT NULL
+    price MONEY NOT NULL,
+    cover TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS cart_item (
+     id SERIAL PRIMARY KEY,
+     customer_id INT REFERENCES Customer(id),
+     book_id INT REFERENCES Book(id)
 );

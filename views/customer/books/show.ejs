@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Readers Shelf</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" href="/customer/books">The Readers Shelf</a>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <button class="btn btn-outline-light" type="submit">Cart</button>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-start">
+        <div class="col-4">
+            <img style="width: 400px; object-fit: fill" src="<%=book.cover%>" class="card-img-top img-fluid my-5" alt="<%=book.title%> Cover Image">
+        </div>
+        <div class="col-8">
+            <h2 class="mt-5 mb-3"><%=book.title%></h2>
+            <h6>Author(s): <span class="fw-normal"><%=book.author%></span></h6>
+            <h6>Genre: <span class="fw-normal"><%=book.genre%></span></h6>
+            <h6>Publisher: <span class="fw-normal"><%=book.publisher%></span></h6>
+            <h6>Year: <span class="fw-normal"><%=book.year%></span></h6>
+            <h6>ISBN: <span class="fw-normal"><%=book.isbn%></span></h6>
+            <h6 class="text-primary"><%=book.quantity%> in stock</h6>
+            <form action="/customer/cart/<%=book.id%>" method="post">
+                <button class="btn btn-primary" type="submit">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/bootstrap.bundle.min.js"></script>
+</body>
+</html>

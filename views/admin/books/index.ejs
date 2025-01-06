@@ -1,0 +1,30 @@
+<h1>Admin</h1>
+<h2>Books</h2>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>ISBN</th>
+        <th>Publisher</th>
+        <th>Year</th>
+        <th>Quantity in Stock</th>
+        <th>Price</th>
+    </tr>
+    <%for (const book of books) {%>
+        <tr>
+            <td><%=book.title%></td>
+            <td><%=book.author%></td>
+            <td><%=book.genre%></td>
+            <td><%=book.isbn%></td>
+            <td><%=book.publisher%></td>
+            <td><%=book.year%></td>
+            <td><%=book.quantity%></td>
+            <td><%=book.price%></td>
+            <td>
+                <a href="/admin/books/<%=book.id%>/edit">Edit</a>
+            </td>
+        </tr>
+    <%}%>
+</table>
+<a href="/admin/books/new">Add a new Book</a>

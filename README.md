@@ -34,11 +34,9 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -48,7 +46,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Picture2](https://github.com/user-attachments/assets/1c6b4e6c-513f-4051-bf94-d124df905307)
+![Picture2](https://github.com/user-attachments/assets/bd92b0ed-e0a7-4140-b9c3-8e2c84867954)
+
 
 The Reader's Shelf is an online bookstore where users can browse books and add them to their carts. Customers have the option to create accounts and sign in. The website features an admin panel, enabling administrators to add new titles and manage inventory efficiently. With  a user-friendly design, The Reader’s Shelf provides a smooth shopping experience. This website is still under development and more features will be  added over time.
 

@@ -33,6 +33,10 @@ app.use("/admin", adminRoutes);
 app.use("/customer", customerRoutes);
 app.use(express.static('public'));
 
+app.get('/', checkNotAuthenticated, (req, res) => {
+    res.render('index');
+})
+
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login');
 })

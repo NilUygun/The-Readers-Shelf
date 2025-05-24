@@ -1,17 +1,41 @@
-<h1>Admin</h1>
-<h2>Books</h2>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>ISBN</th>
-        <th>Publisher</th>
-        <th>Year</th>
-        <th>Quantity in Stock</th>
-        <th>Price</th>
-    </tr>
-    <%for (const book of books) {%>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Readers Shelf</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" href="/customer/books">The Readers Shelf</a>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <button class="btn btn-outline-light" type="submit">Cart</button>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="my-5">
+        <h2>Admin</h2>
+    </div>
+    <div class="my-5">
+        <h2 class="text-center">Books</h2>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>ISBN</th>
+            <th>Publisher</th>
+            <th>Year</th>
+            <th>Quantity in Stock</th>
+            <th>Price</th>
+        </tr>
+        <%for (const book of books) {%>
         <tr>
             <td><%=book.title%></td>
             <td><%=book.author%></td>
@@ -22,9 +46,10 @@
             <td><%=book.quantity%></td>
             <td><%=book.price%></td>
             <td>
-                <a href="/admin/books/<%=book.id%>/edit">Edit</a>
+                <a href="/admin/books/<%=book.id%>/edit" class="btn btn-outline-primary">Edit</a>
             </td>
         </tr>
-    <%}%>
-</table>
-<a href="/admin/books/new">Add a new Book</a>
+        <%}%>
+    </table>
+    <a href="/admin/books/new" class="btn btn-primary">Add</a>
+</div>

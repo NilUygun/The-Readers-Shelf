@@ -1,40 +1,69 @@
-<h1>Add a new Book</h1>
-<form action="/admin/books" method="post">
-    <div>
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Readers Shelf</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" href="/customer/books">The Readers Shelf</a>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-outline-light" href="/customer/cart">Cart</a>
+        </div>
     </div>
-    <div>
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author">
+</nav>
+<div class="container">
+    <div class="mt-5">
+        <h2 class="text-center">Add a Book</h2>
     </div>
-    <div>
-        <label for="genre">Genre</label>
-        <select name="genre" id="genre">
-            <option value="Fiction">Fiction</option>
-            <option value="Non-fiction">Non-fiction</option>
-        </select>
+    <div class="d-flex justify-content-center mb-3">
+        <a href="/admin/books/" class="btn btn-outline-primary">Return to books</a>
     </div>
-    <div>
-        <label for="isbn">ISBN</label>
-        <input type="text" id="isbn" name="isbn">
-    </div>
-    <div>
-        <label for="publisher">Publisher</label>
-        <input type="text" id="publisher" name="publisher">
-    </div>
-    <div>
-        <label for="year">Year</label>
-        <input type="number" min="1900" max="2099" step="1" id="year" name="year"/>
-    </div>
-    <div>
-        <label for="quantity">Quantity in Stock</label>
-        <input type="number" min="0" step="1" id="quantity" name="quantity"/>
-    </div>
-    <div>
-        <label for="price">Price</label>
-        <input type="number" min="0" step="0.01" id="price" name="price">
-    </div>
-    <button type="submit">Add</button>
-</form>
-<a href="/admin/books/">Return to books</a>
+    <form action="/admin/books" method="post" class="d-flex justify-content-center">
+        <div class="mb-3">
+            <div>
+                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                <input type="text" id="title" name="title" class="w-75">
+            </div>
+            <div>
+                <label for="author" class="col-sm-2 col-form-label">Author</label>
+                <input type="text" id="=author" name="author" class="w-75">
+            </div>
+            <div>
+                <label for="genre" class="col-sm-2 col-form-label">Genre</label>
+                <select name="genre" id="genre" class="w-75 form-select">
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-fiction">Non-fiction</option>
+                </select>
+            </div>
+            <div>
+                <label for="isbn" class="col-sm-2 col-form-label">ISBN</label>
+                <input type="text" id="=isbn" name="isbn" class="w-75">
+            </div>
+            <div>
+                <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
+                <input type="text" id="=publisher" name="publisher" class="w-75">
+            </div>
+            <div>
+                <label for="year" class="col-sm-2 col-form-label">Year</label>
+                <input type="number" min="1900" max="2099" step="1" id="year" name="year" class="w-75"/>
+            </div>
+            <div>
+                <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
+                <input type="number" min="0" step="1" id="quantity" name="quantity" class="w-75"/>
+            </div>
+            <div>
+                <label for="price" class="col-sm-2 col-form-label">Price</label>
+                <input type="number" min="0" step="0.01" id="price" name="price" class="w-75">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
